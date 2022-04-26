@@ -28,13 +28,15 @@ const Register = () => {
   const handelRegister = () => {
     const { name, email, password, reEnterPassword } = user;
     if (name && email && password && password === reEnterPassword) {
-      axios.post("http://localhost:9002/register", user).then((res) => {
-        alert(res.data.message);
-        navigate("/login");
-      });
+      axios
+        .post("https://user-app-login.herokuapp.com/register", user)
+        .then((res) => {
+          alert(res.data.message);
+          navigate("/login");
+        });
     } else alert("invalid post");
   };
-
+  console.log("register page");
   return (
     <Container style={{ marginTop: "20vh" }}>
       {/* {console.log("user", user)} */}

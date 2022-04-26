@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 const Homepage = ({ setLogout, userDetails }) => {
-  console.log(userDetails);
+  console.log("homepage");
   return (
     <>
       <Container>{/* <div>homepage</div> */}</Container>

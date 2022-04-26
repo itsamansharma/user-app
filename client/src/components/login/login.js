@@ -20,15 +20,17 @@ const Login = ({ setUserDetails }) => {
   };
   // callRegister = () => {};
   const handelLogin = () => {
-    axios.post("http://localhost:9002/login", user).then((res) => {
-      alert(res.data.message);
-      setUserDetails(res.data.user);
-      navigate("/");
-    });
+    axios
+      .post("https://user-app-login.herokuapp.com/login", user)
+      .then((res) => {
+        alert(res.data.message);
+        setUserDetails(res.data.user);
+        navigate("/");
+      });
   };
   return (
     <Container maxWidth="md" style={{ marginTop: "20vh" }}>
-      {/* {console.log("user", user)} */}
+      {console.log("login page")}
       <Box>
         <Typography variant="h2">Login</Typography>
         <Container>

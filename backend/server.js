@@ -1,15 +1,20 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
 require("dotenv").config();
 
+const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+
+const cors = require("cors");
+
+const path = require("path");
 app.use(express.json());
 app.use(cors());
 
+const PORT = process.env.PORT || 9002;
+
 // Connection to mongodb
 mongoose.connect(
-  process.env.MONGO_URL,
+  "mongodb+srv://user-app-user:ogh4xfTZKk7P8bfK@cluster0.nc1yy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -50,6 +55,11 @@ const User = new mongoose.model("User", userSchema);
 //Routes
 
 //Login setup
+app.get("/", (req, res) => {
+  res.json("deploying........");
+  console.log("sdvsv");
+});
+
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   User.collection.findOne({ email: email }, (err, user) => {
@@ -92,6 +102,9 @@ app.post("/register", (req, res) => {
   });
 });
 
-app.listen(9002, () => {
-  console.log("connected to port 9002..");
+// ----------deployment---------
+
+//------------dev end ----------
+app.listen(PORT, () => {
+  console.log(`connected to port ${PORT}`);
 });
